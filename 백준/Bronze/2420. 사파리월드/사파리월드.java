@@ -1,10 +1,12 @@
-import java.util.Scanner;
+import java.io.*;
+import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String args[]) {
-        Scanner sc = new Scanner(System.in);
-        long N = sc.nextLong(); // seunghwan.royal.gov.sw 유명도
-        long M = sc.nextLong(); // kyuhyun.royal.gov.sw 유명도
+    public static void main(String args[]) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+        long N = Long.parseLong(st.nextToken());
+        long M = Long.parseLong(st.nextToken());
 
         System.out.println(Math.abs(N - M));
     }
