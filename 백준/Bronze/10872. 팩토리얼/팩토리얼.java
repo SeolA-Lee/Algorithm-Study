@@ -6,8 +6,9 @@ public class Main {
         int N = Integer.parseInt(br.readLine());
         int result = 1;
 
-        for (int i = 1; i <= N; i++) {
-            result *= i;
+        while (N != 0) {
+            result *= N;
+            N--;
         }
 
         System.out.println(result);
