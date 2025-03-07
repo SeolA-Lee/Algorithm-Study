@@ -1,21 +1,17 @@
 import java.io.*;
-import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         int T = Integer.parseInt(br.readLine());
-        StringTokenizer st;
+        StringBuilder sb = new StringBuilder();
         for (int i = 1; i <= T; i++) {
-            st = new StringTokenizer(br.readLine(), " ");
-            String A = st.nextToken();
-            String B = st.nextToken();
-            int C = Integer.parseInt(A) + Integer.parseInt(B);
-            bw.write("Case #" + i + ": " + A + " + " + B + " = " + C + "\n");
+            String s = br.readLine();
+            int A = s.charAt(0) - '0';
+            int B = s.charAt(2) - '0';
+            sb.append("Case #" + i + ": ").append(A + " + " + B + " = " + (A + B)).append('\n');
         }
-        bw.flush();
-        bw.close();
+        System.out.println(sb);
         br.close();
     }
 }
