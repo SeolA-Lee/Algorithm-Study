@@ -4,12 +4,18 @@ import java.util.HashSet;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        HashSet<Integer> h = new HashSet<Integer>();
+        boolean[] arr = new boolean[42];
         
         for (int i = 0; i < 10; i++) {
-            h.add(Integer.parseInt(br.readLine()) % 42);
+            arr[Integer.parseInt(br.readLine()) % 42] = true;
         }
         
-        System.out.println(h.size());
+        int count = 0;
+        for (boolean value : arr) {
+            if (value) {
+                count++;
+            }
+        }
+        System.out.println(count);
     }
 }
