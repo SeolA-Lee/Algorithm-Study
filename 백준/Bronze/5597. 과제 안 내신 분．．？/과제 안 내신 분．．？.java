@@ -4,7 +4,6 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String args[]) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringTokenizer st;
 
         int[] students = new int[31];
@@ -20,11 +19,9 @@ public class Main {
 
         for (int i = 0; i < students.length; i++) {
             if (students[i] != 0) {
-                bw.write(students[i] + "\n");
+                System.out.println(students[i]);
             }
         }
         br.close();
-        bw.flush();
-        bw.close();
     }
 }
