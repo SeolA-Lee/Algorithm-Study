@@ -5,20 +5,20 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
-
-        StringTokenizer st;
-        StringBuilder sb;
+        
         int count = N;
         for (int i = 0; i < N; i++) {
-            sb = new StringBuilder();
-            st = new StringTokenizer(br.readLine());
-            String s = st.nextToken();
+            String s = br.readLine();
 
-            for (int j = 1; j < s.length(); j++) {
-                sb.append(s.charAt(0));
-                if (s.charAt(j) != s.charAt(j-1)) {
-                    if (!sb.toString().contains(String.valueOf(s.charAt(j)))) {
-                        sb.append(s.charAt(j));
+            int prev = 0;
+            int[] alphabet = new int[26];
+            for (int j = 0; j < s.length(); j++) {
+                int now = s.charAt(j);
+                
+                if (prev != now) {
+                    if (alphabet[now - 'a'] == 0) {
+                        alphabet[now - 'a']++;
+                        prev = now;
                     } else {
                         count--;
                         break;
