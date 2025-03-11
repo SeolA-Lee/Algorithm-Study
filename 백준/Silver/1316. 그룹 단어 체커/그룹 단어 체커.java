@@ -6,11 +6,6 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
 
-        int[] list = new int[26];
-        for (int i = 0; i < 26; i++) {
-            list[i] = 0;
-        }
-
         StringTokenizer st;
         StringBuilder sb;
         int count = N;
