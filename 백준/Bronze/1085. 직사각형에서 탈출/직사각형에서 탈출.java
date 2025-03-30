@@ -1,5 +1,4 @@
 import java.io.*;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -11,16 +10,11 @@ public class Main {
         int y = Integer.parseInt(st.nextToken());
         int w = Integer.parseInt(st.nextToken());
         int h = Integer.parseInt(st.nextToken());
-
-        int[] arr = new int[4];
-        arr[0] = x;
-        arr[1] = y;
-        arr[2] = w - x;
-        arr[3] = h - y;
-
-        Arrays.sort(arr);
-
-        System.out.println(arr[0]);
+        
+        int x_min = Math.min(x, w - x);
+        int y_min = Math.min(y, h - y);
+        
+        System.out.println(Math.min(x_min, y_min));
         br.close();
     }
 }
