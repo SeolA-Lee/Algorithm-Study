@@ -9,26 +9,16 @@ public class Main {
         int[] arr_y = new int[N];
         
         StringTokenizer st;
-        int area;
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine(), " ");
-            int x = Integer.parseInt(st.nextToken());
-            int y = Integer.parseInt(st.nextToken());
-            
-            arr_x[i] = x;
-            arr_y[i] = y;
+            arr_x[i] = Integer.parseInt(st.nextToken());
+            arr_y[i] = Integer.parseInt(st.nextToken());
         }
         
-        if (N == 1) {
-            area = 0;
-        } else {
-            Arrays.sort(arr_x);
-            Arrays.sort(arr_y);
-            
-            area = (arr_x[N-1] - arr_x[0]) * (arr_y[N-1] - arr_y[0]);
-        }
+        Arrays.sort(arr_x);
+        Arrays.sort(arr_y);
         
-        System.out.println(area);
+        System.out.println((arr_x[N-1] - arr_x[0]) * (arr_y[N-1] - arr_y[0]));
         br.close();
     }
 }
