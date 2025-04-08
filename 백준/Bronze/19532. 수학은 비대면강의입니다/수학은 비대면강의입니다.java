@@ -15,13 +15,8 @@ public class Main {
         int e = Integer.parseInt(st.nextToken());
         int f = Integer.parseInt(st.nextToken());
         
-        for (int x = -999; x <= 999; x++) {
-            for (int y = -999; y <= 999; y++) {
-                if ((a*x + b*y == c) && (d*x + e*y == f)) {
-                    System.out.println(x + " " + y);
-                    return;
-                }
-            }
-        }
+        int y = (a*f - d*c) / (a*e - b*d);
+        int x = (b*f - c*e) / (b*d - a*e);
+        System.out.println(x + " " + y);
     }
 }
