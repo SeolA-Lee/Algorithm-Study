@@ -1,22 +1,22 @@
 import java.io.*;
-import java.util.Arrays;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
         
-        int[] arr = new int[N];
+        ArrayList<Integer> list = new ArrayList<>();
         for (int i = 0; i < N; i++) {
-            arr[i] = Integer.parseInt(br.readLine());
+            list.add(Integer.parseInt(br.readLine()));
         }
         br.close();
         
-        Arrays.sort(arr);
+        Collections.sort(list);
         
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < N; i++) {
-            sb.append(arr[i]).append("\n");
+        for (int val : list) {
+            sb.append(val).append("\n");
         }
 
         System.out.println(sb);
