@@ -5,28 +5,44 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
-        String[][] arr = new String[N][2];
+        Person[] p = new Person[N];
         
         StringTokenizer st;
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine(), " ");
-            arr[i][0] = st.nextToken();
-            arr[i][1] = st.nextToken();
+            int age = Integer.parseInt(st.nextToken());
+            String name = st.nextToken();
+            p[i] = new Person(age, name);
         }
         br.close();
         
-        Arrays.sort(arr, new Comparator<String[]>() {
+        Arrays.sort(p, new Comparator<Person>() {
             @Override
-            public int compare(String[] s1, String[] s2) {
-                return Integer.parseInt(s1[0]) - Integer.parseInt(s2[0]);
+            public int compare(Person p1, Person p2) {
+                return p1.age - p2.age;
             }
         });
         
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < N; i++) {
-            sb.append(arr[i][0] + " " + arr[i][1]).append("\n");
+            sb.append(p[i]);
         }
         
         System.out.println(sb);
+    }
+    
+    public static class Person {
+        int age;
+        String name;
+        
+        public Person(int age, String name) {
+            this.age = age;
+            this.name = name;
+        }
+        
+        @Override
+        public String toString() {
+            return age + " " + name + "\n";
+        }
     }
 }
