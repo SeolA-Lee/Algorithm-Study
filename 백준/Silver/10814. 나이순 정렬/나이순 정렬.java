@@ -5,44 +5,29 @@ public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
-        Person[] p = new Person[N];
+        
+        // 나이 범위 : 1 ~ 200
+        StringBuilder[] sb_arr = new StringBuilder[201];
+        
+        // 객체 배열의 인덱스에 각 StringBuilder 객체를 생성함
+        for (int i = 0; i < sb_arr.length; i++) {
+            sb_arr[i] = new StringBuilder();
+        }
         
         StringTokenizer st;
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine(), " ");
             int age = Integer.parseInt(st.nextToken());
             String name = st.nextToken();
-            p[i] = new Person(age, name);
+            sb_arr[age].append(age + " " + name).append("\n");
         }
         br.close();
         
-        Arrays.sort(p, new Comparator<Person>() {
-            @Override
-            public int compare(Person p1, Person p2) {
-                return p1.age - p2.age;
-            }
-        });
-        
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < N; i++) {
-            sb.append(p[i]);
+        for (StringBuilder val : sb_arr) {
+            sb.append(val);
         }
         
         System.out.println(sb);
-    }
-    
-    public static class Person {
-        int age;
-        String name;
-        
-        public Person(int age, String name) {
-            this.age = age;
-            this.name = name;
-        }
-        
-        @Override
-        public String toString() {
-            return age + " " + name + "\n";
-        }
     }
 }
