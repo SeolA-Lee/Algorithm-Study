@@ -22,10 +22,10 @@ public class Main {
         for (int i = 0; i < M; i++) {
             String findPokemon = br.readLine();
 
-            try {
+            if (findPokemon.charAt(0) >= '1' && findPokemon.charAt(0) <= '9') {
                 int key = Integer.parseInt(findPokemon);
                 sb.append(numMap.get(key)).append("\n");
-            } catch (Exception e) {
+            } else {
                 sb.append(strMap.get(findPokemon)).append("\n");
             }
         }
