@@ -22,13 +22,10 @@ public class Main {
         Arrays.sort(arr2);
 
         int value = 0;
-        map.put(arr2[0], value);
-
-        for (int i = 1; i < N; i++) {
-            if (arr2[i] != arr2[i - 1]) value++;
-
+        for (int i = 0; i < N; i++) {
             if (!map.containsKey(arr2[i])) {
                 map.put(arr2[i], value);
+                value++;
             }
         }
 
