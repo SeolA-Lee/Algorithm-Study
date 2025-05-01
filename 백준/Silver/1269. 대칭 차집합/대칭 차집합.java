@@ -9,35 +9,20 @@ public class Main {
         int A = Integer.parseInt(st.nextToken());
         int B = Integer.parseInt(st.nextToken());
 
-        HashSet<Integer> setA = new HashSet<>();
-        HashSet<Integer> setB = new HashSet<>();
+        HashSet<Integer> set = new HashSet<>();
 
         st = new StringTokenizer(br.readLine(), " ");
         for (int i = 0; i < A; i++) {
-            setA.add(Integer.parseInt(st.nextToken()));
+            set.add(Integer.parseInt(st.nextToken()));
         }
 
         st = new StringTokenizer(br.readLine(), " ");
         for (int i = 0; i < B; i++) {
-            setB.add(Integer.parseInt(st.nextToken()));
+            set.add(Integer.parseInt(st.nextToken()));
         }
 
         br.close();
-        
-        int countA = setA.size();
-        for (int val : setA) {
-            if (setB.contains(val)) {
-                countA--;
-            }
-        }
-        
-        int countB = setB.size();
-        for (int val : setB) {
-            if (setA.contains(val)) {
-                countB--;
-            }
-        }
 
-        System.out.println(countA + countB);
+        System.out.println((set.size() - B) + (set.size() - A));
     }
 }
