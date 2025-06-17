@@ -2,10 +2,10 @@ import java.io.*;
 import java.util.StringTokenizer;
 
 public class Main {
-    static int[] checkArr = new int[4];
-    static int[] myArr = new int[4];
-    static int check;
-    
+    static int[] password = new int[4];
+    static int[] check = new int[4];
+    static int ok;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -22,68 +22,67 @@ public class Main {
         br.close();
 
         for (int i = 0; i < 4; i++) {
-            checkArr[i] = Integer.parseInt(st.nextToken());
-            if (checkArr[i] == 0) check++;
+            password[i] = Integer.parseInt(st.nextToken());
+            if (password[i] == 0) ok++;
         }
 
         //
         int result = 0;
-        
-        for (int i = 0; i < P; i++) add(dna[i]);
 
-        if (check == 4) result++;
-        
-        // 슬라이딩 윈도우 처리 부분
+        for (int i = 0; i < P; i++) slideToAdd(dna[i]);
+        if (ok == 4) result++;
+
+        // 슬라이딩 윈도우
         for (int i = P; i < S; i++) {
             int j = i - P;
-            
-            add(dna[i]);
-            remove(dna[j]);
-            
-            if (check == 4) result++;
+
+            slideToAdd(dna[i]);
+            slideToRemove(dna[j]);
+
+            if (ok == 4) result++;
         }
-        
+
         System.out.println(result);
     }
 
-    private static void add(char c) {
+    private static void slideToAdd(char c) {
         switch (c) {
             case 'A':
-                myArr[0]++;
-                if (myArr[0] == checkArr[0]) check++;
+                check[0]++;
+                if (check[0] == password[0]) ok++;
                 break;
             case 'C':
-                myArr[1]++;
-                if (myArr[1] == checkArr[1]) check++;
-                break; 
+                check[1]++;
+                if (check[1] == password[1]) ok++;
+                break;
             case 'G':
-                myArr[2]++;
-                if (myArr[2] == checkArr[2]) check++;
+                check[2]++;
+                if (check[2] == password[2]) ok++;
                 break;
             case 'T':
-                myArr[3]++;
-                if (myArr[3] == checkArr[3]) check++;
+                check[3]++;
+                if (check[3] == password[3]) ok++;
                 break;
         }
     }
 
-    private static void remove(char c) {
+    private static void slideToRemove(char c) {
         switch (c) {
             case 'A':
-                if (myArr[0] == checkArr[0]) check--;
-                myArr[0]--;
+                if (check[0] == password[0]) ok--;
+                check[0]--;
                 break;
             case 'C':
-                if (myArr[1] == checkArr[1]) check--;
-                myArr[1]--;
+                if (check[1] == password[1]) ok--;
+                check[1]--;
                 break;
             case 'G':
-                if (myArr[2] == checkArr[2]) check--;
-                myArr[2]--;
+                if (check[2] == password[2]) ok--;
+                check[2]--;
                 break;
             case 'T':
-                if (myArr[3] == checkArr[3]) check--;
-                myArr[3]--;
+                if (check[3] == password[3]) ok--;
+                check[3]--;
                 break;
         }
     }
